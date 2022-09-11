@@ -185,13 +185,20 @@ footer{
 
 /*Responsive para mobiles menores o iguales a 480px de ancho*/
 @media screen and (max-width: 560px){
-    h1, nav{
-        text-align: center;
-        margin: 10px;
+    /*Header*/
+    .box{
+        margin: 10px 0;
     }
 
-    nav{
-        position: static;
+
+    h1,nav{
+      text-align: center;
+      position: static;
+      margin: 5% 0;
+    }
+
+    nav a{
+      font-size: 18px;
     }
 
     .lista-diferenciales, .imagen-diferenciales, .video{
