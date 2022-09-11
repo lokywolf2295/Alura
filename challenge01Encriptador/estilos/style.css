@@ -1,0 +1,202 @@
+:root{
+    --ligthblue1: #589cdb;
+    --ligthblue2:#398cda;
+    --white:#fafafa;
+    --gray:#dbd9f790;
+    --blue1: #063d70;
+    --blue2: #05589c;
+    --black: #000;
+    --shadow: 0 8px 8px;
+    --color_shadow: #00000033;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--gray);
+    height: 100%;
+}
+
+/*Cabecera*/
+
+.hero{
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(180deg, var(--blue2) 0%, var(--blue1) 100%);
+    text-align: center;
+}
+
+.title{
+    font-size: 56px;
+    font-weight: 300;
+    color:var(--ligthblue2);
+}
+
+.title--active{
+    color: var(--ligthblue1);
+    font-weight: 700;
+}
+
+/*cuerpo principal de la pagina*/
+
+.card__container{ /* Con esto crearemos el grid de los card donde los ubicaremos en las posiciones deseadas para dar un mayor efecto*/
+    width: 99%; /* para darle un efecto de sombra y que esta no se pegue al container se lo hace mas chico */
+    margin: 0 auto; /* arriba y abajo arriba y abajo y auto a los costados */
+    margin-top: 1em; /* margen ariba */
+    display: grid; /* activamos el grid */
+    grid-template-columns: repeat(3,1fr); /* creamos una repeticion de 3 columnas y una fraccion */
+    grid-template-rows: repeat(4,1fr); /* permite ver las areas de las grids */
+    gap: 20px;
+    grid-template-areas: 
+     /* cada comilla declara una fila y los elementos dentro de las coillas son las columnas o las celdas */
+    ".      card1    .  " /* primero espacio vacío luego la card uno y luego espacio vacio esto hace que solo se vea la card arriba al medio */
+    "card2  card1  card3"
+    "card2  card4  card3"
+    ".      card4    .  ";
+}
+
+.card__item{
+    padding: 10px;
+    background: linear-gradient(180deg, var(--ligthblue2) 0%, var(--ligthblue1) 100%);;
+    border-top: 5px solid var(--blue1);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card__item:nth-last-of-type(1){
+    grid-area: card1;
+    /* Con esto le designamos una posicion a cada item de esta manera lo ordenamos a gusto para que quede de la manera que antes habiamos planeado */
+}
+
+.card__item:nth-last-of-type(2){
+    grid-area: card2;
+}
+
+.card__item:nth-last-of-type(3){
+    grid-area: card3;
+}
+
+.card__item:nth-last-of-type(4){
+    grid-area: card4;
+}
+
+.card__img{
+    background: var(--color-primary);
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card__picture{
+    width: 100%;
+}
+
+.card__title{
+    margin: 20px 0;
+    font-size: 1.5rem;
+}
+
+.card__paragraph{
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.hover-galeria {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    transform: scale(0);
+    background: linear-gradient(180deg, var(--blue2) 0%, var(--blue1) 100%);;
+    transition: transform .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card__item:hover .hover-galeria {
+    align-items: center;
+    transform: scale(0.32);
+    height: 110%;
+}
+
+/*arreglamos posicionamiento de cada tarjeta del hover-galeria*/
+.card__item:nth-child(1):hover .hover-galeria {
+    margin-top: 7%;
+}
+
+.card__item:nth-child(2):hover .hover-galeria {
+    margin-top: -2%;
+}
+
+.card__item:nth-child(3):hover .hover-galeria {
+    margin-top: -2%;
+}
+
+.card__item:nth-child(4):hover .hover-galeria {
+    margin-top: -11%;
+}
+
+
+.hover-galeria img, .hover-galeria p{
+    width: 25%;
+    margin: auto;
+    color: #fff;
+    font-size: 5em;
+}
+
+
+/*final de la pagina*/
+
+.contact{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 1.4em;
+}
+
+.item__contact{
+    width: 33%;
+    padding: 10px 0;
+    text-align: center;
+    background: linear-gradient(180deg, var(--blue2) 0%, var(--blue1) 100%);
+}
+
+.item__contact--mid{
+    width: 34%;
+    background: linear-gradient(180deg, var(--ligthblue2) 0%, var(--blue1) 100%);
+}
+
+.socialmedia__icon{
+    font-size: 36px;
+    margin-left: auto;
+    display: inline-block;
+    color: var(--black);
+}
+
+.sm-whatsapp:hover{
+    color: transparent;
+    background-image: url("../imagenes/whatsapp.png");
+    background-repeat: no-repeat;
+}
+
+.sm-linkedin:hover{
+    color: #004182;
+    background-color: var(--white);
+    border: none;
+}
+.sm-gitHub:hover{
+    color: var(--white);
+    background-color: var(--black);
+}
