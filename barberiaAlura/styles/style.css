@@ -195,7 +195,7 @@ footer {
 
 /*Responsive*/
 @media screen and (max-width:3000px){
-  .box,  .main{
+  .box,  main{
     width: auto;
 }
 }
