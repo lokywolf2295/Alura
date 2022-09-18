@@ -53,11 +53,9 @@ function btnEncriptar() {
     document.getElementById("toy").style.display = "none";
     const encriptado = encriptar(inputTexto.value);
     mensaje.value = encriptado;
-    mensaje.style.backgroundImage = "none"; /*borramos la imagen de fondo*/
     inputTexto.value = ""; /*borramos el texto*/
     document.getElementById("titulo-resultado").innerHTML=encriptacionExitosa;
     document.getElementById("resultado").innerHTML=mensaje;
-
     resultado(si);
   } else {
     Swal.fire({
@@ -103,14 +101,15 @@ La letra "úfat" es convertida en "ú"
 
 function btnDesencriptar() {
   if (inputTexto.value != "") {
+    document.getElementById("toy").style.display = "none";
     const textoEncriptado = desencriptar(
       inputTexto.value
     ); //guardamos el contenido de la función desencriptar
-    mensaje.style.backgroundImage = "none";
     mensaje.value = textoEncriptado;
     inputTexto.value = "";
     document.getElementById("titulo-resultado").innerHTML =
       desencriptacionExitosa;
+    document.getElementById("resultado").innerHTML=mensaje;
     resultado(si);
   } else {//Si el input está vacío entonces aparece un pop up de error
     Swal.fire({
@@ -145,6 +144,7 @@ function btnCopiar() {
     mensaje.value = "";
     mensaje.style.backgroundImage = "";
     document.getElementById("titulo-resultado").innerHTML = "";
+    document.getElementById("toy").style.display = "";
     resultado(no);
     Swal.fire({ //luego de copiar aparece un pop up de exito
       position: "center",
