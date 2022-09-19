@@ -10,7 +10,8 @@
   --blue3: #3958e480;
   --black1: #000;
   --black2: #08070780;
-
+  --color-terminal: #292b36;
+  --borde-redondo: 4px;
   --shadow: 0 8px 8px;
   --color_shadow: #00000033;
 }
@@ -71,6 +72,36 @@ main {
 .input-texto::placeholder {
   color: var(--ligthblue3);
   font-weight: lighter;
+}
+
+/*Para la barra de los encriptadores*/
+.rango {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  text-align: center;
+  align-items: center;
+  color: var(--white1);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  border-radius: var(--borde-redondo);
+  background:var(--color-terminal);
+  margin: 0;
+  padding: 0 5px;
+  height: 20px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  cursor: pointer;
+  -webkit-appearance: none;
+  background:var(--white1);
+  border-radius: 50%;
+  height:10px;
+  width:10px;
 }
 
 .btn-enc {
@@ -301,6 +332,11 @@ footer {
     height: 20%;
   }
 
+  .rango {
+    width: 90%;
+    margin: 10px auto;
+  }
+
   .tablero {
     margin: auto;
     width: 85%;
@@ -338,7 +374,19 @@ footer {
     font-size: 1.4em;
   }
 
+  .rango {
+    width: 80%;
+  }
+
   .btn-enc, .btn-des{
     width: auto;
+    margin: 2em 7%;
+  }
+}
+
+/*Responsive para dispositivos menores o iguales a 500px de ancho*/
+@media only screen and (max-width: 400px) {
+  .btn-enc, .btn-des{
+    margin: 2em 5%;
   }
 }
