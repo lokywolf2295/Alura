@@ -1,37 +1,25 @@
 const inputTexto = document.querySelector(".input-texto");
-
+const rango = document.getElementById('rango');
 const mensaje = document.querySelector(".mensaje");
+const abecedario = "abcdefghijklmnopqrstuvwxyz";
+var caracteres = "áéíóúàèìòùäëïöü";
 
+var salida = "";
 var encriptacionExitosa = "TEXTO ENCRIPTADO:";
 var desencriptacionExitosa = "TEXTO DESENCRIPTADO:";
 
-let codigo = [
-  ["e", "enter"],
-  ["i", "imes"],
-  ["a", "ai"],
-  ["o", "ober"],
-  ["u", "ufat"],
-  ["é", "énter"],
-  ["í", "ímes"],
-  ["á", "ái"],
-  ["ó", "óber"],
-  ["ú", "úfat"],
-];
+/* REGLAS DE ENCRIPTADO CESAR
 
-/* REGLAS DE ENCRIPTADO
+ Es un tipo de cifrado por sustitución en el que una letra en el texto original es reemplazada por otra letra que se encuentra un número fijo de posiciones más adelante en el alfabeto. 
 
-La letra "a" es convertida en "ai"
-La letra "e" es convertida en "enter"
-La letra "i" es convertida en "imes"
-La letra "o" es convertida en "ober"
-La letra "u" es convertida en "ufat"
+ Es decir por ejemplo la palabra hola y la clave 6
 
-MEJORA PAR TILDES
-La letra "á" es convertida en "ái"
-La letra "é" es convertida en "énter"
-La letra "í" es convertida en "ímes"
-La letra "ó" es convertida en "óber"
-La letra "ú" es convertida en "úfat"
+ La letra "H" en el alfabeto se encuentra en la posición: 8  a ese 8 se le suma la clave es decir 14 y se intercambia por la letra en esa posición, en este caso la "N".
+ La letra "O" en el alfabeto se encuentra en la posición: 8  a ese 8 se le suma la clave es decir 14 y se intercambia por la letra en esa posición, en este caso la "U".
+ La letra "L" en el alfabeto se encuentra en la posición: 8  a ese 8 se le suma la clave es decir 14 y se intercambia por la letra en esa posición, en este caso la "R".
+ La letra "A" en el alfabeto se encuentra en la posición: 8  a ese 8 se le suma la clave es decir 14 y se intercambia por la letra en esa posición, en este caso la "G".
+
+ Por lo tanto la palabra "hola" en el cifrado cesar de clave 6 pasa a ser "nurg"
 */
 
 var si = "";
@@ -51,7 +39,7 @@ resultado(no);
 function btnEncriptar() {
   if (inputTexto.value != "") {
     document.getElementById("toy").style.display = "none";
-    const encriptado = encriptar(inputTexto.value);
+    const encriptado = encriptar(inputTexto.value, rango.value);
     mensaje.value = encriptado;
     inputTexto.value = ""; /*borramos el texto*/
     document.getElementById("titulo-resultado").innerHTML=encriptacionExitosa;
@@ -68,32 +56,31 @@ function btnEncriptar() {
   }
 }
 
-function encriptar(textoEncriptado) {
-  textoEncriptado = textoEncriptado.toLowerCase(); // transforma el texto a minúscula 
-
-  for (let i = 0; i < codigo.length; i++) { //recorremos el texto reemplazando las letras por sus palabras correspondientes
-    if (textoEncriptado.includes(codigo[i][0])) {
-      textoEncriptado = textoEncriptado.replaceAll(codigo[i][0], codigo[i][1]);
-      //.replaceAll es para que reemplace todas las coincidencias
+function encriptar(textoEncriptado, clave) {//recorremos el texto reemplazando las letras por sus correspondientes en el abecedario sumado el rango/clave
+  textoEncriptado = textoEncriptado.toLowerCase(); // transforma el texto a minúscula
+  for (var caracter of textoEncriptado) {
+    posicion = abecedario.indexOf(caracter);//la posicion de la letra en el abcd
+    if(abecedario.indexOf(caracter) != -1){ //compruebo que cada caracter esté en el abecedario
+        salida += abecedario[(posicion + parseInt(clave)) % 26]; //agregamos cada letra en salida
+    }else{ //si el caracter no está en el abecedario entonces lo agrego directo
+        salida += caracter;
     }
   }
+  textoEncriptado = salida;
+  salida = "";
   return textoEncriptado;
 }
 
 /* REGLAS DE DESENCRIPTADO 
 
-La palabra "ai" es convertida en "a"
-La palabra "enter" es convertida en "e"
-La palabra "imes" es convertida en "i"
-La palabra "ober" es convertida en "o"
-La palabra "ufat" es convertida en "u"
+ Por ejemplo la palabra nurg y la clave 6
 
-MEJORA PAR TILDES
-La letra "ái" es convertida en "á"
-La letra "énter" es convertida en "é"
-La letra "ímes" es convertida en "í"
-La letra "óber" es convertida en "ó"
-La letra "úfat" es convertida en "ú"
+ La letra "N" en el alfabeto se encuentra en la posición: 8  a ese 8 se le suma la clave es decir 14 y se intercambia por la letra en esa posición, en este caso la "H".
+ La letra "U" en el alfabeto se encuentra en la posición: 8  a ese 8 se le suma la clave es decir 14 y se intercambia por la letra en esa posición, en este caso la "O".
+ La letra "R" en el alfabeto se encuentra en la posición: 8  a ese 8 se le suma la clave es decir 14 y se intercambia por la letra en esa posición, en este caso la "L".
+ La letra "G" en el alfabeto se encuentra en la posición: 8  a ese 8 se le suma la clave es decir 14 y se intercambia por la letra en esa posición, en este caso la "A".
+
+ Por lo tanto la palabra "nurg" en el cifrado cesar de clave 6 pasa a ser "hola"
 
 */
 
@@ -102,9 +89,7 @@ La letra "úfat" es convertida en "ú"
 function btnDesencriptar() {
   if (inputTexto.value != "") {
     document.getElementById("toy").style.display = "none";
-    const textoEncriptado = desencriptar(
-      inputTexto.value
-    ); //guardamos el contenido de la función desencriptar
+    const textoEncriptado = desencriptar(inputTexto.value, rango.value); //guardamos el contenido de la función desencriptar
     mensaje.value = textoEncriptado;
     inputTexto.value = "";
     document.getElementById("titulo-resultado").innerHTML =
@@ -122,17 +107,19 @@ function btnDesencriptar() {
   }
 }
 
-function desencriptar(textoDesencriptado) {
+function desencriptar(textoDesencriptado, clave) {//recorremos el texto reemplazando las letras por sus correspondientes en el abecedario sumado el rango/clave
   textoDesencriptado = textoDesencriptado.toLowerCase();
 
-  for (let i = 0; i < codigo.length; i++) {
-    if (textoDesencriptado.includes(codigo[i][1])) {
-      textoDesencriptado = textoDesencriptado.replaceAll(
-        codigo[i][1],
-        codigo[i][0]
-      );
+  for (var caracter of textoDesencriptado) {
+    posicion = abecedario.indexOf(caracter);//la posicion de la letra en el abcd
+    if(abecedario.indexOf(caracter) != -1){ //compruebo que cada caracter esté en el abecedario
+        salida += abecedario[(posicion - parseInt(clave)) % 26]; //agregamos cada letra en salida
+    }else{ //si el caracter no está en el abecedario entonces lo agrego directo
+        salida += caracter;
     }
   }
+  textoDesencriptado = salida;
+  salida = "";
   return textoDesencriptado;
 }
 
