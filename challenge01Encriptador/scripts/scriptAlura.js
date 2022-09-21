@@ -2,8 +2,8 @@ const inputTexto = document.querySelector(".input-texto");
 
 const mensaje = document.querySelector(".mensaje");
 
-var encriptacionExitosa = "TEXTO ENCRIPTADO:";
-var desencriptacionExitosa = "TEXTO DESENCRIPTADO:";
+let encriptacionExitosa = "TEXTO ENCRIPTADO:";
+let desencriptacionExitosa = "TEXTO DESENCRIPTADO:";
 
 let codigo = [
   ["e", "enter"],
@@ -34,8 +34,8 @@ La letra "ó" es convertida en "óber"
 La letra "ú" es convertida en "úfat"
 */
 
-var si = "";
-var no = "none";
+let si = "";
+let no = "none";
 
 //resultado permite mostrar u ocultar los elementos en su interior
 function resultado(ver){

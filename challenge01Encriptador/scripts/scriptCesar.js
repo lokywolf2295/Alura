@@ -1,12 +1,11 @@
 const inputTexto = document.querySelector(".input-texto");
-const rango = document.getElementById('rango');
+const rango = document.getElementById("rango");
 const mensaje = document.querySelector(".mensaje");
 const abecedario = "abcdefghijklmnopqrstuvwxyz";
-var caracteres = "áéíóúàèìòùäëïöü";
 
-var salida = "";
-var encriptacionExitosa = "TEXTO ENCRIPTADO:";
-var desencriptacionExitosa = "TEXTO DESENCRIPTADO:";
+let salida = "";
+let encriptacionExitosa = "TEXTO ENCRIPTADO:";
+let desencriptacionExitosa = "TEXTO DESENCRIPTADO:";
 
 /* REGLAS DE ENCRIPTADO CESAR
 
@@ -22,30 +21,33 @@ var desencriptacionExitosa = "TEXTO DESENCRIPTADO:";
  Por lo tanto la palabra "hola" en el cifrado cesar de clave 6 pasa a ser "nurg"
 */
 
-var si = "";
-var no = "none";
+let si = "";
+let no = "none";
 
 //resultado permite mostrar u ocultar los elementos en su interior
-function resultado(ver){
-  document.getElementById("titulo-resultado").style.display = ver;  
+function resultado(ver) {
+  document.getElementById("titulo-resultado").style.display = ver;
   document.getElementById("btn-copy").style.display = ver;
   document.getElementById("resultado").style.display = ver;
 }
 
 resultado(no);
 
+//Compara dos string para saber si un caracter de la cadena1 se encuentra en la cadena2
+function compare(str1, str2) {
+  let contains = false;
+  for (const letter of str2) {
+    if (letter != " " && str1.includes(letter)) contains = true;
+  }
+  return contains;
+}
+
 //ENCRIPTAR MENSAJE
 
 function btnEncriptar() {
-  if (inputTexto.value != "") {
-    document.getElementById("toy").style.display = "none";
-    const encriptado = encriptar(inputTexto.value, rango.value);
-    mensaje.value = encriptado;
-    inputTexto.value = ""; /*borramos el texto*/
-    document.getElementById("titulo-resultado").innerHTML=encriptacionExitosa;
-    document.getElementById("resultado").innerHTML=mensaje;
-    resultado(si);
-  } else {
+  const caracteres =
+    "ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëÇçðÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
+  if (inputTexto.value == "") {
     Swal.fire({
       position: "center",
       icon: "error",
@@ -53,17 +55,37 @@ function btnEncriptar() {
       showConfirmButton: false,
       timer: 1500,
     });
+  } else if (compare(inputTexto.value, caracteres) == true) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Ingrese el texto sin acentos ni caracteres especiales",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    inputTexto.value = ""; /*borramos el texto*/
+  } else {
+    document.getElementById("toy").style.display = "none";
+    const encriptado = encriptar(inputTexto.value, rango.value);
+    mensaje.value = encriptado;
+    inputTexto.value = ""; /*borramos el texto*/
+    document.getElementById("titulo-resultado").innerHTML = encriptacionExitosa;
+    document.getElementById("resultado").innerHTML = mensaje;
+    resultado(si);
   }
 }
 
-function encriptar(textoEncriptado, clave) {//recorremos el texto reemplazando las letras por sus correspondientes en el abecedario sumado el rango/clave
+function encriptar(textoEncriptado, clave) {
+  //recorremos el texto reemplazando las letras por sus correspondientes en el abecedario sumado el rango/clave
   textoEncriptado = textoEncriptado.toLowerCase(); // transforma el texto a minúscula
-  for (var caracter of textoEncriptado) {
-    posicion = abecedario.indexOf(caracter);//la posicion de la letra en el abcd
-    if(abecedario.indexOf(caracter) != -1){ //compruebo que cada caracter esté en el abecedario
-        salida += abecedario[(posicion + parseInt(clave)) % 26]; //agregamos cada letra en salida
-    }else{ //si el caracter no está en el abecedario entonces lo agrego directo
-        salida += caracter;
+  for (let caracter of textoEncriptado) {
+    posicion = abecedario.indexOf(caracter); //la posicion de la letra en el abcd
+    if (abecedario.indexOf(caracter) != -1) {
+      //compruebo que cada caracter esté en el abecedario
+      salida += abecedario[(posicion + parseInt(clave)) % 26]; //agregamos cada letra en salida
+    } else {
+      //si el caracter no está en el abecedario entonces lo agrego directo
+      salida += caracter;
     }
   }
   textoEncriptado = salida;
@@ -87,35 +109,48 @@ function encriptar(textoEncriptado, clave) {//recorremos el texto reemplazando l
 //DESENCRIPTAR MENSAJE
 
 function btnDesencriptar() {
-  if (inputTexto.value != "") {
-    document.getElementById("toy").style.display = "none";
-    const textoEncriptado = desencriptar(inputTexto.value, rango.value); //guardamos el contenido de la función desencriptar
-    mensaje.value = textoEncriptado;
-    inputTexto.value = "";
-    document.getElementById("titulo-resultado").innerHTML =
-      desencriptacionExitosa;
-    document.getElementById("resultado").innerHTML=mensaje;
-    resultado(si);
-  } else {//Si el input está vacío entonces aparece un pop up de error
+  const caracteres =
+    "ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëÇçðÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
+  if (inputTexto.value == "") {
     Swal.fire({
       position: "center",
       icon: "error",
-      title: "Ingrese el texto a Desencriptar",
+      title: "Ingrese el texto a Encriptar",
       showConfirmButton: false,
       timer: 1500,
     });
+  } else if (compare(inputTexto.value, caracteres) == true) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Ingrese el texto sin acentos ni caracteres especiales",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    inputTexto.value = ""; /*borramos el texto*/
+  } else {
+    document.getElementById("toy").style.display = "none";
+    const textoEncriptado = desencriptar(inputTexto.value, rango.value);
+    mensaje.value = textoEncriptado;
+    inputTexto.value = ""; /*borramos el texto*/
+    document.getElementById("titulo-resultado").innerHTML = desencriptacionExitosa;
+    document.getElementById("resultado").innerHTML = mensaje;
+    resultado(si);
   }
 }
 
-function desencriptar(textoDesencriptado, clave) {//recorremos el texto reemplazando las letras por sus correspondientes en el abecedario sumado el rango/clave
+function desencriptar(textoDesencriptado, clave) {
+  //recorremos el texto reemplazando las letras por sus correspondientes en el abecedario sumado el rango/clave
   textoDesencriptado = textoDesencriptado.toLowerCase();
 
-  for (var caracter of textoDesencriptado) {
-    posicion = abecedario.indexOf(caracter);//la posicion de la letra en el abcd
-    if(abecedario.indexOf(caracter) != -1){ //compruebo que cada caracter esté en el abecedario
-        salida += abecedario[(posicion - parseInt(clave)) % 26]; //agregamos cada letra en salida
-    }else{ //si el caracter no está en el abecedario entonces lo agrego directo
-        salida += caracter;
+  for (let caracter of textoDesencriptado) {
+    posicion = abecedario.indexOf(caracter); //la posicion de la letra en el abcd
+    if (abecedario.indexOf(caracter) != -1) {
+      //compruebo que cada caracter esté en el abecedario
+      salida += abecedario[(posicion - parseInt(clave)) % 26]; //agregamos cada letra en salida
+    } else {
+      //si el caracter no está en el abecedario entonces lo agrego directo
+      salida += caracter;
     }
   }
   textoDesencriptado = salida;
@@ -133,11 +168,12 @@ function btnCopiar() {
     document.getElementById("titulo-resultado").innerHTML = "";
     document.getElementById("toy").style.display = "";
     resultado(no);
-    Swal.fire({ //luego de copiar aparece un pop up de exito
+    Swal.fire({
+      //luego de copiar aparece un pop up de exito
       position: "center",
       icon: "success",
       title: "Copiado Exitosamente",
       showConfirmButton: false,
       timer: 1500,
     });
-}
+  }
