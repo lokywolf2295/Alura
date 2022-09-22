@@ -19,6 +19,7 @@
 body {
   font-family: "Exo 2", sans-serif;
   background-image: url(../imagenes/fondo.jpg);
+  background-size: 100%;
   box-sizing: border-box;
 }
 
@@ -386,7 +387,12 @@ footer {
 
 /*Responsive para dispositivos menores o iguales a 500px de ancho*/
 @media only screen and (max-width: 400px) {
+
+  .home {
+    margin: 0 70%;
+  }
+
   .btn-enc, .btn-des{
-    margin: 2em 5%;
+    margin: 2em 3%;
   }
 }

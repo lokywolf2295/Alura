@@ -115,7 +115,7 @@ function btnDesencriptar() {
     Swal.fire({
       position: "center",
       icon: "error",
-      title: "Ingrese el texto a Encriptar",
+      title: "Ingrese el texto a Desencriptar",
       showConfirmButton: false,
       timer: 1500,
     });
