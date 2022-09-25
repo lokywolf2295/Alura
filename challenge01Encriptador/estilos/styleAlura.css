@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --ligthblue1: #589cdb;
   --ligthblue2: #398cda;
@@ -14,13 +20,13 @@
   --borde-redondo: 4px;
   --shadow: 0 8px 8px;
   --color_shadow: #00000033;
+  --fuente: "Exo 2", sans-serif;
 }
 
 body {
-  font-family: "Exo 2", sans-serif;
+  font-family: var(--fuente);
   background-image: url(../imagenes/fondo.jpg);
   background-size: 100%;
-  box-sizing: border-box;
 }
 
 header {
@@ -41,6 +47,7 @@ header {
 main {
   display: flex;
   margin: 1em;
+  /* border: 2px solid red; */
   flex-direction: row;
 }
 
@@ -52,6 +59,15 @@ main {
   font-family: Georgia, "Times New Roman";
   border-bottom: 1px solid var(--white1);
   text-align: center;
+}
+
+#input_murcielago{
+  height: 40vh;
+}
+
+#clave_murcielago{
+  height: 20vh;
+  margin-top: 2em;
 }
 
 .input-texto {
@@ -152,6 +168,11 @@ input[type='range']::-webkit-slider-thumb {
   cursor: pointer;
 }
 
+/*botones para la pagina murcielago*/
+#enc, #desenc{
+  margin: 1em 1em;
+}
+
 /*Resultado de la Encriptacion/Desencriptacion*/
 .tablero {
   display: flex;
@@ -250,6 +271,11 @@ footer {
   color: var(--white1);
   font-size: 1.5em;
   font-weight: bold;
+}
+
+/*copyright murcielago*/
+#cyr {
+  margin-top: 1em;
 }
 
 /*Responsive para dispositivos mayores o iguales a 1100px de ancho*/
