@@ -79,7 +79,7 @@ function encriptar(textoEncriptado, clave) {
   //recorremos el texto reemplazando las letras por sus correspondientes en el abecedario sumado el rango/clave
   textoEncriptado = textoEncriptado.toLowerCase(); // transforma el texto a minúscula
   for (let caracter of textoEncriptado) {
-    posicion = abecedario.indexOf(caracter); //la posicion de la letra en el abcd
+    let posicion = abecedario.indexOf(caracter); //la posicion de la letra en el abcd
     if (abecedario.indexOf(caracter) != -1) {
       //compruebo que cada caracter esté en el abecedario
       salida += abecedario[(posicion + parseInt(clave)) % 26]; //agregamos cada letra en salida
