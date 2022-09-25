@@ -49,6 +49,7 @@ main {
   margin: 1em;
   /* border: 2px solid red; */
   flex-direction: row;
+  align-items: center;
 }
 
 .titulo-encriptador {
@@ -59,15 +60,6 @@ main {
   font-family: Georgia, "Times New Roman";
   border-bottom: 1px solid var(--white1);
   text-align: center;
-}
-
-#input_murcielago{
-  height: 40vh;
-}
-
-#clave_murcielago{
-  height: 20vh;
-  margin-top: 2em;
 }
 
 .input-texto {
@@ -89,6 +81,15 @@ main {
 .input-texto::placeholder {
   color: var(--ligthblue3);
   font-weight: lighter;
+}
+
+#input_murcielago{
+  height: 40vh;
+}
+
+#clave_murcielago{
+  height: 20vh;
+  margin-top: 2em;
 }
 
 /*Para la barra de los encriptadores*/
@@ -409,16 +410,40 @@ footer {
     width: auto;
     margin: 2em 7%;
   }
+
+  #enc{
+    margin: 1em 0 1em 12%;
+  }
+
+  #desenc{
+    margin: 1em 0 1em 12%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  #enc{
+    margin: 1em 0 1em 9%;
+  }
+
+  #desenc{
+    margin: 1em 0 1em 9%;
+  }
 }
 
 /*Responsive para dispositivos menores o iguales a 500px de ancho*/
 @media only screen and (max-width: 400px) {
 
+  #titulo-murcielago{
+    font-size: 1.1em  }
   .home {
     margin: 0 70%;
   }
 
   .btn-enc, .btn-des{
     margin: 2em 3%;
+  }
+
+  #enc,#desenc{
+    margin: 1em 0 1em 5%;
   }
 }
