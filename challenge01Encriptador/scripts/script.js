@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   divAfin.addEventListener("click", function(event) {
     //enlace de la pagina que quieras
-    window.location.href = "encriptadorAFin.html";
+    window.location.href = "encriptadorMurcielago.html";
   });
   divTransposicion.addEventListener("click", function(event) {
     //enlace de la pagina que quieras
