@@ -124,9 +124,7 @@ function encriptar(textoEncriptado, clave) {
 
  Elegimos la clave, por ejemplo: 4
 
- luego se calcula la extención del texto cifrado
-
- ejemplo: hcesooslmtaoa = 13
+ luego se calcula la extención del texto cifrado ejemplo: hcesooslmtaoa = 13
  
  seguidamente se multiplica la clave a cantidad que habilite un cuadrado que contenga esa extención. en este caso 4 * 4 = 16 
 

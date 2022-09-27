@@ -11,11 +11,6 @@ let codigo = [
   ["a", "ai"],
   ["o", "ober"],
   ["u", "ufat"],
-  ["é", "énter"],
-  ["í", "ímes"],
-  ["á", "ái"],
-  ["ó", "óber"],
-  ["ú", "úfat"],
 ];
 
 /* REGLAS DE ENCRIPTADO
@@ -25,13 +20,6 @@ La letra "e" es convertida en "enter"
 La letra "i" es convertida en "imes"
 La letra "o" es convertida en "ober"
 La letra "u" es convertida en "ufat"
-
-MEJORA PAR TILDES
-La letra "á" es convertida en "ái"
-La letra "é" es convertida en "énter"
-La letra "í" es convertida en "ímes"
-La letra "ó" es convertida en "óber"
-La letra "ú" es convertida en "úfat"
 */
 
 let si = "";
@@ -46,18 +34,21 @@ function resultado(ver){
 
 resultado(no);
 
+//Compara dos string para saber si un caracter de la cadena1 se encuentra en la cadena2
+function compare(str1, str2) {
+  let contains = false;
+  for (const letter of str2) {
+    if (letter != " " && str1.includes(letter)) contains = true;
+  }
+  return contains;
+}
+
 //ENCRIPTAR MENSAJE
 
 function btnEncriptar() {
-  if (inputTexto.value != "") {
-    document.getElementById("toy").style.display = "none";
-    const encriptado = encriptar(inputTexto.value);
-    mensaje.value = encriptado;
-    inputTexto.value = ""; /*borramos el texto*/
-    document.getElementById("titulo-resultado").innerHTML=encriptacionExitosa;
-    document.getElementById("resultado").innerHTML=mensaje;
-    resultado(si);
-  } else {
+  const caracteres =
+    "ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëÇçðÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
+  if (inputTexto.value == "") {
     Swal.fire({
       position: "center",
       icon: "error",
@@ -65,6 +56,23 @@ function btnEncriptar() {
       showConfirmButton: false,
       timer: 1500,
     });
+  } else if (compare(inputTexto.value, caracteres) == true) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Ingrese el texto sin acentos ni caracteres especiales",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    inputTexto.value = ""; /*borramos el texto*/
+  } else {
+    document.getElementById("toy").style.display = "none";
+    const encriptado = encriptar(inputTexto.value);
+    mensaje.value = encriptado;
+    inputTexto.value = ""; /*borramos el texto*/
+    document.getElementById("titulo-resultado").innerHTML = encriptacionExitosa;
+    document.getElementById("resultado").innerHTML = mensaje;
+    resultado(si);
   }
 }
 
@@ -100,18 +108,9 @@ La letra "úfat" es convertida en "ú"
 //DESENCRIPTAR MENSAJE
 
 function btnDesencriptar() {
-  if (inputTexto.value != "") {
-    document.getElementById("toy").style.display = "none";
-    const textoEncriptado = desencriptar(
-      inputTexto.value
-    ); //guardamos el contenido de la función desencriptar
-    mensaje.value = textoEncriptado;
-    inputTexto.value = "";
-    document.getElementById("titulo-resultado").innerHTML =
-      desencriptacionExitosa;
-    document.getElementById("resultado").innerHTML=mensaje;
-    resultado(si);
-  } else {//Si el input está vacío entonces aparece un pop up de error
+  const caracteres =
+    "ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëÇçðÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
+  if (inputTexto.value == "") {
     Swal.fire({
       position: "center",
       icon: "error",
@@ -119,6 +118,23 @@ function btnDesencriptar() {
       showConfirmButton: false,
       timer: 1500,
     });
+  } else if (compare(inputTexto.value, caracteres) == true) {
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Ingrese el texto sin acentos ni caracteres especiales",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    inputTexto.value = ""; /*borramos el texto*/
+  } else {
+    document.getElementById("toy").style.display = "none";
+    const textoEncriptado = desencriptar(inputTexto.value);
+    mensaje.value = textoEncriptado;
+    inputTexto.value = ""; /*borramos el texto*/
+    document.getElementById("titulo-resultado").innerHTML = desencriptacionExitosa;
+    document.getElementById("resultado").innerHTML = mensaje;
+    resultado(si);
   }
 }
 
