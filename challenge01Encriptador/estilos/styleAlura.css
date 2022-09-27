@@ -350,6 +350,10 @@ footer {
     margin: 0 80%;
   }
 
+  #titulo-transposicion{
+    font-size: 1.55em;
+  }
+
   .ingreso{
     width: 90%;
   }
@@ -402,6 +406,10 @@ footer {
     font-size: 1.4em;
   }
 
+  #titulo-transposicion{
+    font-size: 1.25em;
+  }
+
   .rango {
     width: 80%;
   }
@@ -433,8 +441,11 @@ footer {
 /*Responsive para dispositivos menores o iguales a 500px de ancho*/
 @media only screen and (max-width: 400px) {
 
-  #titulo-murcielago{
-    font-size: 1.1em  }
+  #titulo-murcielago,   #titulo-transposicion{ 
+    border-bottom: none;
+    margin-bottom: 20px;
+  }
+
   .home {
     margin: 0 70%;
   }
