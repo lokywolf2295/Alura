@@ -82,6 +82,7 @@ function btnEncriptar() {
     const encriptado = encriptar(inputTexto.value, rango.value);
     mensaje.value = encriptado;
     inputTexto.value = ""; /*borramos el texto*/
+    rango.value = "10";
     document.getElementById("titulo-resultado").innerHTML = encriptacionExitosa;
     document.getElementById("resultado").innerHTML = mensaje;
     resultado(si);
@@ -178,7 +179,7 @@ function btnDesencriptar() {
     const textoEncriptado = desencriptar(inputTexto.value, rango.value);
     mensaje.value = textoEncriptado;
     inputTexto.value = ""; /*borramos el texto*/
-    clave.value = "10";
+    rango.value = "10";
     document.getElementById("titulo-resultado").innerHTML = desencriptacionExitosa;
     document.getElementById("resultado").innerHTML = mensaje;
     resultado(si);
