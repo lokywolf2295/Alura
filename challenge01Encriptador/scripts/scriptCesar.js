@@ -110,7 +110,7 @@ function encriptar(textoEncriptado, clave) {
 
 function btnDesencriptar() {
   const caracteres =
-    "ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëÇçðÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž";
+    "ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëÇçðÐÌÍÎÏìíîïÙÚÛÜùúûüŠšŸÿýŽž";
   if (inputTexto.value == "") {
     Swal.fire({
       position: "center",
@@ -147,7 +147,11 @@ function desencriptar(textoDesencriptado, clave) {
     posicion = abecedario.indexOf(caracter); //la posicion de la letra en el abcd
     if (abecedario.indexOf(caracter) != -1) {
       //compruebo que cada caracter esté en el abecedario
-      salida += abecedario[(posicion - parseInt(clave)) % 26]; //agregamos cada letra en salida
+      let newPosicion = (posicion - parseInt(clave)) % 26;
+      if (newPosicion < 0) { //si newPosicion es menor a 0 entonces le sumo 26 para que de esta manera se tenga en cuenta todas las letras
+        newPosicion += 26;
+      }
+      salida += abecedario[newPosicion]; //agregamos cada letra en salida
     } else {
       //si el caracter no está en el abecedario entonces lo agrego directo
       salida += caracter;
