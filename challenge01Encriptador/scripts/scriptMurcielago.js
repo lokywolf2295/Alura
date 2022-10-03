@@ -168,16 +168,27 @@ function desencriptar(textoDesencriptado, clave) {
   clave = clave.toLowerCase();
 
   for (let caracter of textoDesencriptado) {
+    if (caracter === " ") { //compruebo si el caracter es un espacio lo agrego y continuo
+      salida += caracter;
+      continue;
+    }
     const charNumber = Number(caracter);
-    const isCharNumber = !Number.isNaN(charNumber);
-    if (isCharNumber) salida += clave[caracter];
+    const isCharNumber = isNumber(charNumber);
+    if (isCharNumber) {
+      salida += clave[caracter];
     //compruebo que cada caracter esté en la clave
     //agregamos cada letra a la salida luego de la comprobacion
-    else salida += caracter; //si no está se agrega la misma letra
+    }else {salida += caracter; //si no está se agrega la misma letra
+    }
   }
   textoDesencriptado = salida;
   salida = "";
   return textoDesencriptado;
+}
+
+//funcion que comprueba si el caracter es un numero
+function isNumber(charNumber) {
+  return typeof charNumber === "number" && isFinite(charNumber);
 }
 
 // COPIAR TEXTO
