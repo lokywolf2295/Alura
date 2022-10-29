@@ -9,7 +9,7 @@
 
 <div display=flex flex-wrap= wrap justify-content=space-between>
  
-![Oracle](https://i.postimg.cc/HnCFHHMW/oracle-logo-495-px.jpg) ![Alura](https://i.postimg.cc/wTr3kGYx/oracle-latam-495-px.jpg)
+![Oracle](https://i.postimg.cc/BQm08HZf/Oracle.jpg) ![Alura](https://i.postimg.cc/28Gz4gwJ/Alura-Latam.jpg)
  
 </div>
 
