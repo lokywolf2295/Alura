@@ -1,10 +1,17 @@
-# One Next Education
-![One](https://i.postimg.cc/KYvxTWKp/One.png)
+<div align="center">
+ 
+# One Oracle Next Education
+![One](https://i.postimg.cc/wxQsp28g/One-1.png)
+ 
+</div>
 
-Este Repositorio contiene todas las actividades realizadas en el Curso "One Next Education", desarrollado en conjunto por la Empresa Oracle y Alura Latam que es el brazo online de Caelum, una reconocida escuela de tecnología e innovación en Brasil.
+<h3>Este Repositorio contiene todas las actividades realizadas en el Curso "One Next Education", desarrollado en conjunto por la Empresa Oracle y Alura Latam que es el brazo online de Caelum, una reconocida escuela de tecnología e innovación en Brasil.</h3>
 
-![Oracle](https://i.postimg.cc/VLRhtkj1/oracle-logo.png)
-![Alura](https://i.postimg.cc/SxRgz7S7/Alura.jpg)
+<div display=flex flex-wrap= wrap justify-content=space-between>
+ 
+![Oracle](https://i.postimg.cc/HnCFHHMW/oracle-logo-495-px.jpg) ![Alura](https://i.postimg.cc/wTr3kGYx/oracle-latam-495-px.jpg)
+ 
+</div>
 
 En el #challengeonecodificador3 debemos realizar un encriptador:
 
