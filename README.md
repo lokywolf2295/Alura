@@ -1,6 +1,10 @@
 # One Next Education
+![One](https://i.postimg.cc/KYvxTWKp/One.png)
 
 Este Repositorio contiene todas las actividades realizadas en el Curso "One Next Education", desarrollado en conjunto por la Empresa Oracle y Alura Latam que es el brazo online de Caelum, una reconocida escuela de tecnología e innovación en Brasil.
+
+![Oracle](https://i.postimg.cc/VLRhtkj1/oracle-logo.png)
+![Alura](https://i.postimg.cc/SxRgz7S7/Alura.jpg)
 
 En el #challengeonecodificador3 debemos realizar un encriptador:
 
@@ -11,6 +15,8 @@ En el #challengeonecodificador3 debemos realizar un encriptador:
 
 Para ello decidí ya que poseo conocimientos relacionados a la encriptación.
 Crear no una, sinó 4 paginas que permitan encriptar y desencriptar textos de diferentes maneras.
+
+![encriptador](https://i.postimg.cc/tCXPsqqh/Portada-Encriptador.jpg)
 
 ## Encriptador Alura:
 
@@ -23,6 +29,8 @@ Las "llaves" de encriptación que utilizé son las siguientes:
 `La letra "u" es convertida para "ufat"`
 
 Permitiendo intercambiar cada vez que se encuentre una letra por su texto correspondiente.
+
+![encriptadorAlura](https://i.postimg.cc/wMMJMFzS/Encriptador-Alura-Desktop-1.jpg)
 
 ## Encriptador Cesar
 
@@ -54,6 +62,7 @@ La entrada consiste en las N líneas que contiene una cadena.
 Salida
 Imprimir N líneas con las cadenas convertidas.
 
+![encriptadorMurcielago](https://i.postimg.cc/Gmgk0W1v/Encriptador-Alura-Desktop-2.jpg)
 
 ## Encriptador por Transposición
 
@@ -82,7 +91,12 @@ hcesooslmtaoa
 
 y de esta manera ya lo tenemos cifrado
 
+## Vista Versión Móbile
+<img alt="Version Móbile Portada"  src="https://i.postimg.cc/85ZGwmvk/Encriptador-Alura-Mobile-1.jpg"/>
+
+<img alt="Version Móbile Encriptador Cesar"  src="https://i.postimg.cc/KcsFMQFJ/Encriptador-Alura-Mobile-2.jpg"/>
+
 
 ## Insignia Recibida
 
-![onenexteducation](https://d335luupugsy2.cloudfront.net/cms%2Ffiles%2F10224%2F1659462746Badge_Sharer_Alura_ChallengeOracleONE_2000x2000_V3.png?utm_campaign=alura_latam_-_challenge_email_projeto_1_esp&utm_medium=email&utm_source=RD+Station)
+![onenexteducation](https://i.postimg.cc/cJmG4BX7/cms-files-10224-1659462746-Badge-Sharer-Alura-Challenge-Oracle-ONE-2000x2000-V3.png)
